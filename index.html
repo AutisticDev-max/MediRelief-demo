@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediRelief - Freedom in Medical Donations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ffffff;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .color-header {
+            height: 50vh;
+            background: linear-gradient(135deg, #3498db, #2ecc71, #2980b9);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            clip-path: ellipse(100% 100% at 50% 0%);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+        }
+
+        .header-subtitle {
+            font-size: 1.4rem;
+            color: white;
+            opacity: 0.9;
+            font-weight: 300;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            padding: 80px 20px 60px;
+            text-align: center;
+            background: #ffffff;
+            flex: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: #5d6d7e;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .whatsapp-cta {
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            font-weight: 600;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .whatsapp-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+        }
+
+        .whatsapp-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .whatsapp-cta:hover::before {
+            left: 100%;
+        }
+
+        .revolution-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .revolution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .revolution-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 5px solid #3498db;
+        }
+
+        .revolution-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .revolution-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper {
+            font-size: 3rem;
+            color: #3498db;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .icon-bank { color: #3498db; }
+        .icon-noparty { color: #e74c3c; }
+        .icon-whatsapp { color: #25D366; }
+        .icon-lightning { color: #f39c12; }
+        .icon-medical { color: #3498db; }
+        .icon-shield { color: #9b59b6; }
+        .icon-ai { color: #9b59b6; animation: aiPulse 2s ease-in-out infinite; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes aiPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .whatsapp-animated {
+            animation: whatsappPulse 2s ease-in-out infinite;
+        }
+
+        .revolution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .revolution-card p {
+            color: #5d6d7e;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .how-it-works {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            margin: 20px auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .freedom-section {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .freedom-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .freedom-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #3498db;
+        }
+
+        .freedom-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .medical-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-radius: 12px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+            background: #ffffff;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #5d6d7e;
+            line-height: 1.6;
+        }
+
+        .hackathon-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .hackathon-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hackathon-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .hackathon-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .hackathon-feature {
+            text-align: center;
+        }
+
+        .hackathon-feature i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #2ecc71;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hackathon-feature h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 50px 20px 30px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            line-height: 1.8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #3498db;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.8rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .color-header {
+                height: 40vh;
+                clip-path: ellipse(120% 100% at 50% 0%);
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .medical-features,
+            .revolution-grid,
+            .steps-grid,
+            .hackathon-features {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Color Transition Header-->
+    <div class="color-header">
+        <div class="header-content">
+            <h1 class="main-title">MediRelief</h1>
+            <p class="header-subtitle">Financial Freedom in Medical Emergencies</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <p class="subtitle">
+            Revolutionizing medical donations with Bitcoin Lightning technology. 
+            No banks, no third parties, no borders. Just direct, instant help when it matters most.
+        </p>
+        <a href="https://wa.me/14155238886?text=help" class="whatsapp-cta" target="_blank">
+    Start on WhatsApp Now
+</a>
+
+    Start on WhatsApp Now
+        </a>
+
+        <!-- Revolution Section -->
+        <div class="revolution-section">
+            <h2 class="section-title">The Revolution is Here</h2>
+            <div class="revolution-grid">
+                <div class="revolution-card">
+                    <div class="revolution-icon">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-university icon-bank"></i>
+                        </div>
+                    </div>
+                    <h3>No Banks Needed</h3>
+                    <p>Traditional banking systems create delays and barriers. MediRelief bypasses banks entirely using Bitcoin Lightning, ensuring funds reach those in need instantly, 24/7/365.</p>
+                </div>
+                <div class="revolution-card">
+                    <div class="revolution-icon">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-ban icon-noparty"></i>
+                        </div>
+                    </div>
+                    <h3>Zero Third Parties</h3>
+                    <p>No payment processors, no intermediaries taking cuts. Your donation goes directly from you to the medical case with complete transparency on the blockchain.</p>
+                </div>
+                <div class="revolution-card">
+                    <div class="revolution-icon">
+                        <div class="icon-wrapper">
+                            <i class="fab fa-whatsapp icon-whatsapp whatsapp-animated"></i>
+                        </div>
+                    </div>
+                    <h3>WhatsApp Powered</h3>
+                    <p>Accessible to everyone, everywhere. No complicated apps to download. Start, manage, and track medical donation cases directly through WhatsApp - the platform people already use and trust.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="how-it-works">
+            <h2 class="section-title">How MediRelief Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fab fa-whatsapp icon-whatsapp whatsapp-animated"></i>
+                    </div>
+                    <h3>Message WhatsApp</h3>
+                    <p>Start a conversation with MediRelief bot on WhatsApp</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-robot icon-ai"></i>
+                    </div>
+                    <h3>AI Case Generation</h3>
+                    <p>Our AI helps create and verify your medical case instantly</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-bolt icon-lightning"></i>
+                    </div>
+                    <h3>Get Lightning Address</h3>
+                    <p>Receive instant Bitcoin Lightning donation address</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-shield-alt icon-shield"></i>
+                    </div>
+                    <h3>Share & Receive</h3>
+                    <p>Share your case and receive donations directly, globally</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hackathon Section -->
+        <div class="hackathon-section">
+            <div class="hackathon-content">
+                <h2 class="hackathon-title">Built for Freedom</h2>
+                <p class="freedom-text">
+                    MediRelief was born at Hack4Freedom 2025 - a platform created by women, for humanity. 
+                            We're breaking barriers in both technology and healthcare, proving that financial freedom 
+                            and medical relief should be accessible to all, regardless of gender or geography.
+                        </p>
+                </p>
+                <div class="hackathon-features">
+                    <div class="hackathon-feature">
+                        <i class="fab fa-bitcoin"></i>
+                
+                        <h4>Bitcoin & Lightning</h4>
+                        <p>Leveraging cutting-edge technologies like Bitcoin, Lightning, and Nostr for financial freedom</p>
+                    </div>
+                    <div class="hackathon-feature">
+                        <i class="fas fa-globe-africa"></i>
+                        <h4>Global Impact</h4>
+                        <p>Connecting with the worldwide open-source Bitcoin community for maximum reach</p>
+                    </div>
+                    <div class="hackathon-feature">
+                        <i class="fas fa-users"></i>
+                     
+                       <h4>Remote Collaboration</h4>
+                        <p>Global remote participation with mentorship from idea to prototype development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Freedom Section -->
+        <div class="freedom-section">
+            <div class="freedom-content">
+                <h2 class="freedom-title">True Financial Freedom</h2>
+                <p class="freedom-text">
+                    MediRelief was born from a simple truth: when medical emergencies strike, traditional financial systems often fail. Banks have operating hours, borders create barriers, and third parties take precious time and money.
+                </p>
+                <p class="freedom-text">
+                    We've eliminated all of that. With Bitcoin Lightning technology, donations happen in seconds, not days. There are no account freezes, no transfer limits, no geographical restrictions. Just pure, direct financial support flowing instantly to where it's needed most.
+                </p>
+                <p class="freedom-text">
+                    This is more than technology - it's freedom. Freedom from bureaucracy, freedom from borders, freedom to save lives without permission from anyone.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="medical-features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt icon-lightning"></i>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Instant Bitcoin Lightning transactions for urgent medical needs. No delays when lives are at stake.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heartbeat icon-medical"></i>
+                </div>
+                <h3>Medical Focus</h3>
+                <p>Dedicated exclusively to healthcare emergencies and medical relief efforts worldwide.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt icon-shield"></i>
+                </div>
+                <h3>Secure & Transparent</h3>
+                <p>Blockchain-powered transparency with secure, verifiable transactions for donors and recipients.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About MediRelief</h3>
+                <p>Transforming healthcare funding through blockchain technology and AI-powered solutions for medical emergencies worldwide. Freedom from banks, freedom to heal.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#">How It Works</a></p>
+                <p><a href="#">Create Case</a></p>
+                <p><a href="#">Donate Now</a></p>
+                <p><a href="#">Emergency Help</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>hello@medirelief.org</p>
+                <p>+2347042546826</p>
+                <p>WhatsApp:+14155238886-HELP</p>
+    
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MediRelief. All rights reserved. | Built at Hack4Freedom Hackathon 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
