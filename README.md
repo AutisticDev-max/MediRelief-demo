@@ -29,6 +29,7 @@ Demo
 Try the WhatsApp bot (once hosted):  
 
 [Start on WhatsApp](https://wa.me/14155238886?text=help)
+
 Technology Stack
 
 -WhatsApp / Twilio  
@@ -37,7 +38,7 @@ Technology Stack
 - SQLite  
 - Nostr 
 
- Hack4Freedom 2024
+ Hack4Freedom 2025
 
 Team: Nusaiba Abdulnasir & Kabira Kabir 
 
